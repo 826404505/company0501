@@ -1,6 +1,7 @@
 package com.zsq.company0501.dao;
 
 import com.zsq.company0501.po.Area;
+import org.apache.ibatis.annotations.Param;
 
 public interface AreaMapper {
     int deleteByPrimaryKey(Integer areaId);
@@ -14,4 +15,6 @@ public interface AreaMapper {
     int updateByPrimaryKeySelective(Area record);
 
     int updateByPrimaryKey(Area record);
+
+    Area selectParent(@Param("parentId") Integer parentId);
 }

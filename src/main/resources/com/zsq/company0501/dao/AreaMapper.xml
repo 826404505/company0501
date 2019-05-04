@@ -10,6 +10,14 @@
   <sql id="Base_Column_List">
     area_id, name, parent_id, sort
   </sql>
+
+  <select id="selectParent" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from 0501area
+    where area_id = #{parentId,jdbcType=INTEGER}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

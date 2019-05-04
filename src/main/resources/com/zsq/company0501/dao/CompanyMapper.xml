@@ -53,7 +53,8 @@
     delete from 0501company
     where company_id = #{companyId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zsq.company0501.po.Company">
+  <insert id="insert" parameterType="com.zsq.company0501.po.Company" useGeneratedKeys="true"
+          keyProperty="companyId">
     insert into 0501company (company_id, code, name, 
       shortcut, type, phone, 
       mp_id, auth_code, auth_date, 
