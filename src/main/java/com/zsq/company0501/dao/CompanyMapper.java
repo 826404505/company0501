@@ -1,5 +1,7 @@
 package com.zsq.company0501.dao;
 
+import com.github.pagehelper.Page;
+import com.zsq.company0501.dto.CompanyListDto;
 import com.zsq.company0501.po.Company;
 
 public interface CompanyMapper {
@@ -14,4 +16,6 @@ public interface CompanyMapper {
     int updateByPrimaryKeySelective(Company record);
 
     int updateByPrimaryKey(Company record);
+
+    Page<CompanyListDto> search(String keyword);
 }
