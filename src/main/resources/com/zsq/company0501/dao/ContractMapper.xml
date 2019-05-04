@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zsq.company0501.dao.ContractMapper">
+  <resultMap id="BaseResultMap" type="com.zsq.company0501.po.Contract">
+    <id column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="singer" jdbcType="VARCHAR" property="singer" />
+    <result column="tax_payer_id" jdbcType="VARCHAR" property="taxPayerId" />
+    <result column="alipay_app_id" jdbcType="VARCHAR" property="alipayAppId" />
+    <result column="alipay_app_key" jdbcType="VARCHAR" property="alipayAppKey" />
+    <result column="wechatpay_app_id" jdbcType="VARCHAR" property="wechatpayAppId" />
+    <result column="wechatpay_app_key" jdbcType="VARCHAR" property="wechatpayAppKey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    company_id, bank_name, email, singer, tax_payer_id, alipay_app_id, alipay_app_key, 
+    wechatpay_app_id, wechatpay_app_key
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from 0501contract
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from 0501contract
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zsq.company0501.po.Contract">
+    insert into 0501contract (company_id, bank_name, email, 
+      singer, tax_payer_id, alipay_app_id, 
+      alipay_app_key, wechatpay_app_id, wechatpay_app_key
+      )
+    values (#{companyId,jdbcType=INTEGER}, #{bankName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{singer,jdbcType=VARCHAR}, #{taxPayerId,jdbcType=VARCHAR}, #{alipayAppId,jdbcType=VARCHAR}, 
+      #{alipayAppKey,jdbcType=VARCHAR}, #{wechatpayAppId,jdbcType=VARCHAR}, #{wechatpayAppKey,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zsq.company0501.po.Contract">
+    insert into 0501contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="singer != null">
+        singer,
+      </if>
+      <if test="taxPayerId != null">
+        tax_payer_id,
+      </if>
+      <if test="alipayAppId != null">
+        alipay_app_id,
+      </if>
+      <if test="alipayAppKey != null">
+        alipay_app_key,
+      </if>
+      <if test="wechatpayAppId != null">
+        wechatpay_app_id,
+      </if>
+      <if test="wechatpayAppKey != null">
+        wechatpay_app_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="singer != null">
+        #{singer,jdbcType=VARCHAR},
+      </if>
+      <if test="taxPayerId != null">
+        #{taxPayerId,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayAppId != null">
+        #{alipayAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayAppKey != null">
+        #{alipayAppKey,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatpayAppId != null">
+        #{wechatpayAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatpayAppKey != null">
+        #{wechatpayAppKey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zsq.company0501.po.Contract">
+    update 0501contract
+    <set>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="singer != null">
+        singer = #{singer,jdbcType=VARCHAR},
+      </if>
+      <if test="taxPayerId != null">
+        tax_payer_id = #{taxPayerId,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayAppId != null">
+        alipay_app_id = #{alipayAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayAppKey != null">
+        alipay_app_key = #{alipayAppKey,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatpayAppId != null">
+        wechatpay_app_id = #{wechatpayAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatpayAppKey != null">
+        wechatpay_app_key = #{wechatpayAppKey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zsq.company0501.po.Contract">
+    update 0501contract
+    set bank_name = #{bankName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      singer = #{singer,jdbcType=VARCHAR},
+      tax_payer_id = #{taxPayerId,jdbcType=VARCHAR},
+      alipay_app_id = #{alipayAppId,jdbcType=VARCHAR},
+      alipay_app_key = #{alipayAppKey,jdbcType=VARCHAR},
+      wechatpay_app_id = #{wechatpayAppId,jdbcType=VARCHAR},
+      wechatpay_app_key = #{wechatpayAppKey,jdbcType=VARCHAR}
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+</mapper>
